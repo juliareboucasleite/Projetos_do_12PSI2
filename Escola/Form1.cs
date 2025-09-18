@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dapper;
 
 namespace Escola
 {
@@ -30,6 +32,17 @@ namespace Escola
         private void DataNascimento_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Obter o número de alunos na base de dados
+            using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
+            {
+                int n = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM alunos");
+
+                NumeroRegistos.Text = $"{n} alunos";
+            }
         }
     }
 }
