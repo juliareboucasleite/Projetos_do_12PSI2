@@ -66,7 +66,19 @@ namespace Escola
             {
                 int n = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM alunos");
                 NumeroRegistos.Text = $"{n} alunos";
+
+                // Obter dados dos alunos
+                var sql = "SELECT * FROM alunos";
+                Alunos = connection.Query<Aluno>(sql).ToList();
+                foreach (Aluno a in Alunos)
+                {
+                    ListViewItem item = new ListViewItem(new string[] {
+                a.NumeroProcesso.ToString(), a.Numero.ToString(), a.Nome, a.DataNascimento.ToString("dd/MM/yyyy") });
+                    ListaAlunos.Items.Add(item);
+                }
             }
+
+           
         }
 
         private void ListaAlunos_SelectedIndexChanged(object sender, EventArgs e)
