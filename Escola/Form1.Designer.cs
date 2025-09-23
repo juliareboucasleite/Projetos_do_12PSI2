@@ -57,6 +57,7 @@
             this.ListaAlunos.Size = new System.Drawing.Size(353, 262);
             this.ListaAlunos.TabIndex = 1;
             this.ListaAlunos.UseCompatibleStateImageBehavior = false;
+            this.ListaAlunos.SelectedIndexChanged += new System.EventHandler(this.ListaAlunos_SelectedIndexChanged);
             // 
             // NumeroRegistos
             // 
