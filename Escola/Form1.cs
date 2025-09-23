@@ -114,6 +114,55 @@ namespace Escola
                 DataNascimento.Value = aluno.DataNascimento;
             }
         }
+        /// <summary>
+        /// Eliminar um aluno.
+        /// </summary>
+        private void EliminarAluno_Click(object sender, EventArgs e)
+        {
+            // Verificar se foi selecionado um aluno na ListView
+            if (ListaAlunos.SelectedItems.Count > 0)
+            {
+                // Confirmar que o utilizador pretende eliminar o registo do aluno
+                if (MessageBox.Show("Confirma a eliminação do registo?", "Eliminar registo",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    // Obter o número de processo do aluno selecionado
+                    int numeroProcesso = int.Parse(ListaAlunos.SelectedItems[0].SubItems[0].Text);
+                    // Encontrar o aluno com base no seu número de processo
+                    Aluno aluno = Alunos.Find(x => x.NumeroProcesso == numeroProcesso);
+                    // Verificar se o aluno existe
+                    if (aluno != null)
+                    {
+                        // Obter a chave primária do aluno (ID)
+                        int id = aluno.ID;
+                        using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
+                        {
+                            // Executar e obter o número de registos eliminados
 
+                            int i = connection.Execute("DELETE FROM alunos WHERE ID = @ID", new
+                            {
+                                ID =
+
+                            id
+                            });
+                            // Verificar se foram eliminados registos
+
+                            if (i == 1)
+                            {
+                                // Refrescar os controlos porque foi eliminado um registo
+                                Inicializar();
+                                MessageBox.Show("O registo foi eliminado", "Eliminar registo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocorreu um erro a tentar eliminar o registo",
+                                "Eliminar registo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
