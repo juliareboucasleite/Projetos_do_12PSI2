@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Dapper;
+using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dapper;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Escola
 {
@@ -183,6 +185,50 @@ namespace Escola
                             MessageBox.Show("Ocorreu um erro de base de dados ao tentar eliminar o registo","Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                }
+            }
+        }
+        /// <summary>
+        /// Atualiza os dados do aluno selecionado.
+        /// </summary>
+        private void AtualizarAluno_Click(object sender, EventArgs e)
+        {
+            // Verificar se foi selecionado um aluno na ListView
+            if (ListaAlunos.SelectedItems.Count > 0)
+            {
+                try
+                {
+                    var sql = "UPDATE alunos SET Nome = @nome, Morada = @morada, CodigoPostal =@codigoPostal, Email = @email, DataNascimento = @dataNascimento WHERE ID = @id";
+                using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
+                    {
+                        // Obter os dados nos controlos e inseri-los em parâmetros para a consulta SQL
+                        int i = connection.Execute(sql, new
+                        {
+                            nome = Nome.Text,
+                            morada = Morada.Text,
+                            codigoPostal = CodigoPostal.Text,
+                            email = Email.Text,
+                            dataNascimento =
+                        DataNascimento.Value.ToString("yyyy-MM-dd"),
+                            id = IdAluno.Text
+                        });
+                        // Verificar se foi atualizado 1 registo
+                        if (i == 1)
+                        {
+                            // Refrescar os controlos porque o registo foi atualizado
+                            Inicializar();
+                            MessageBox.Show("O registo foi atualizado com sucesso", "Atualizarregisto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocorreu um erro a tentar atualizar o registo", "Atualizarregisto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Ocorreu um erro de base de dados ao tentar atualizar o registo",
+                    "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
