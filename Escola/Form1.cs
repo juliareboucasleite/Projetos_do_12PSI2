@@ -71,24 +71,33 @@ namespace Escola
             CodigoPostal.Text = "";
             Email.Text = "";
             DataNascimento.Value = DateTime.Now;
-
-            // Obter o número de alunos na base de dados
-            using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
+            try
             {
-                int n = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM alunos");
-                NumeroRegistos.Text = $"{n} alunos";
-
-                // Obter dados dos alunos
-                var sql = "SELECT * FROM alunos";
-                Alunos = connection.Query<Aluno>(sql).ToList();
-                foreach (Aluno a in Alunos)
+                // Obter o número de alunos na base de dados
+                using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
                 {
-                    ListViewItem item = new ListViewItem(new string[] {
-                a.NumeroProcesso.ToString(), a.Numero.ToString(), a.Nome, a.DataNascimento.ToString("dd/MM/yyyy") });
-                    ListaAlunos.Items.Add(item);
-                }
-            }
+                    int n = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM alunos");
+                    NumeroRegistos.Text = $"{n} alunos";
 
+                    // Obter dados dos alunos
+                    var sql = "SELECT * FROM alunos";
+                    Alunos = connection.Query<Aluno>(sql).ToList();
+                    foreach (Aluno a in Alunos)
+                    {
+                        ListViewItem item = new ListViewItem(new string[] {
+                a.NumeroProcesso.ToString(), a.Numero.ToString(), a.Nome, a.DataNascimento.ToString("dd/MM/yyyy") });
+                        ListaAlunos.Items.Add(item);
+                    }
+                }
+            } catch (MySqlException ex) {
+                string msg = "Ocorreu um erro ao tentar utilizar a base de dados";
+                // Verificar se o servidor de base de dados está em execução
+                if (ex.Number == 1042)
+                {
+                    msg += "\n\nDetalhes: erro de ligação ao servidor de BD";
+                }
+                MessageBox.Show(msg, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
         /// <summary>
@@ -146,30 +155,32 @@ namespace Escola
                     {
                         // Obter a chave primária do aluno (ID)
                         int id = aluno.ID;
-                        using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
+
+                        try {
+                            using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
+                            {
+                                // Executar e obter o número de registos eliminados
+
+                                int i = connection.Execute("DELETE FROM alunos WHERE ID = @ID", new { ID = id });
+
+                                // Verificar se foram eliminados registos
+                                if (i == 1)
+                                {
+                                    // Refrescar os controlos porque foi eliminado um registo
+                                    Inicializar();
+                                    MessageBox.Show("O registo foi eliminado", "Eliminar registo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ocorreu um erro a tentar eliminar o registo",
+                                    "Eliminar registo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        catch (MySqlException ex)
                         {
-                            // Executar e obter o número de registos eliminados
-
-                            int i = connection.Execute("DELETE FROM alunos WHERE ID = @ID", new
-                            {
-                                ID =
-
-                            id
-                            });
-                            // Verificar se foram eliminados registos
-
-                            if (i == 1)
-                            {
-                                // Refrescar os controlos porque foi eliminado um registo
-                                Inicializar();
-                                MessageBox.Show("O registo foi eliminado", "Eliminar registo",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Ocorreu um erro a tentar eliminar o registo",
-                                "Eliminar registo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            MessageBox.Show("Ocorreu um erro de base de dados ao tentar eliminar o registo","Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
