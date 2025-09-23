@@ -78,12 +78,42 @@ namespace Escola
                 }
             }
 
-           
-        }
 
+        }
+        /// <summary>
+        /// O utilizador clicou num item na lista de alunos.
+        /// </summary>
         private void ListaAlunos_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (ListaAlunos.SelectedItems.Count > 0)
+            {
+                // Obter o número de processo do aluno selecionado
+                BindAluno(int.Parse(ListaAlunos.SelectedItems[0].SubItems[0].Text));
+            }
         }
+
+        /// <summary>
+        /// Colocar nos controlos os dados de um aluno.
+        /// </summary>
+        /// <param name="numeroProcesso">O número de processo de um aluno.</param>
+        private void BindAluno(int numeroProcesso)
+        {
+            // Encontrar o aluno com base no seu número de processo
+            Aluno aluno = Alunos.Find(x => x.NumeroProcesso == numeroProcesso);
+
+            // Verificar se existe o aluno
+            if (aluno != null)
+            {
+                IdAluno.Text = aluno.ID.ToString();
+                NumeroProcesso.Text = aluno.NumeroProcesso.ToString();
+                NumeroAluno.Text = aluno.Numero.ToString();
+                Nome.Text = aluno.Nome;
+                Morada.Text = aluno.Morada;
+                CodigoPostal.Text = aluno.CodigoPostal;
+                Email.Text = aluno.Email;
+                DataNascimento.Value = aluno.DataNascimento;
+            }
+        }
+
     }
 }

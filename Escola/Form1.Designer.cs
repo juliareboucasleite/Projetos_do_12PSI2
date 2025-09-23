@@ -39,7 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.IdAlunos = new System.Windows.Forms.Label();
+            this.IdAluno = new System.Windows.Forms.Label();
             this.NumeroProcesso = new System.Windows.Forms.Label();
             this.NumeroAluno = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -144,15 +144,15 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Número Aluno:";
             // 
-            // IdAlunos
+            // IdAluno
             // 
-            this.IdAlunos.AutoSize = true;
-            this.IdAlunos.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IdAlunos.Location = new System.Drawing.Point(417, 57);
-            this.IdAlunos.Name = "IdAlunos";
-            this.IdAlunos.Size = new System.Drawing.Size(38, 13);
-            this.IdAlunos.TabIndex = 4;
-            this.IdAlunos.Text = "label6";
+            this.IdAluno.AutoSize = true;
+            this.IdAluno.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdAluno.Location = new System.Drawing.Point(417, 57);
+            this.IdAluno.Name = "IdAluno";
+            this.IdAluno.Size = new System.Drawing.Size(38, 13);
+            this.IdAluno.TabIndex = 4;
+            this.IdAluno.Text = "label6";
             // 
             // NumeroProcesso
             // 
@@ -231,7 +231,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NumeroAluno);
             this.Controls.Add(this.NumeroProcesso);
-            this.Controls.Add(this.IdAlunos);
+            this.Controls.Add(this.IdAluno);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -265,7 +265,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label IdAlunos;
+        private System.Windows.Forms.Label IdAluno;
         private System.Windows.Forms.Label NumeroProcesso;
         private System.Windows.Forms.Label NumeroAluno;
         private System.Windows.Forms.Label label1;
