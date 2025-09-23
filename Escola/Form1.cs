@@ -61,6 +61,17 @@ namespace Escola
         /// </summary>
         private void Inicializar()
         {
+            // Fazer reset a todos os controlos
+            ListaAlunos.Items.Clear();
+            IdAluno.Text = "";
+            NumeroProcesso.Text = "";
+            NumeroAluno.Text = "";
+            Nome.Text = "";
+            Morada.Text = "";
+            CodigoPostal.Text = "";
+            Email.Text = "";
+            DataNascimento.Value = DateTime.Now;
+
             // Obter o número de alunos na base de dados
             using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
             {
