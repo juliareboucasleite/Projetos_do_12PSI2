@@ -49,6 +49,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.EliminarAluno = new System.Windows.Forms.Button();
             this.AtualizarAluno = new System.Windows.Forms.Button();
+            this.LimparDados = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListaAlunos
@@ -223,7 +224,7 @@
             // 
             // EliminarAluno
             // 
-            this.EliminarAluno.Location = new System.Drawing.Point(285, 325);
+            this.EliminarAluno.Location = new System.Drawing.Point(292, 346);
             this.EliminarAluno.Name = "EliminarAluno";
             this.EliminarAluno.Size = new System.Drawing.Size(75, 23);
             this.EliminarAluno.TabIndex = 4;
@@ -233,7 +234,7 @@
             // 
             // AtualizarAluno
             // 
-            this.AtualizarAluno.Location = new System.Drawing.Point(204, 325);
+            this.AtualizarAluno.Location = new System.Drawing.Point(211, 346);
             this.AtualizarAluno.Name = "AtualizarAluno";
             this.AtualizarAluno.Size = new System.Drawing.Size(75, 23);
             this.AtualizarAluno.TabIndex = 3;
@@ -241,11 +242,22 @@
             this.AtualizarAluno.UseVisualStyleBackColor = true;
             this.AtualizarAluno.Click += new System.EventHandler(this.AtualizarAluno_Click);
             // 
+            // LimparDados
+            // 
+            this.LimparDados.Location = new System.Drawing.Point(61, 346);
+            this.LimparDados.Name = "LimparDados";
+            this.LimparDados.Size = new System.Drawing.Size(75, 23);
+            this.LimparDados.TabIndex = 21;
+            this.LimparDados.Text = "&Limpar";
+            this.LimparDados.UseVisualStyleBackColor = true;
+            this.LimparDados.Click += new System.EventHandler(this.LimparDados_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 393);
+            this.Controls.Add(this.LimparDados);
             this.Controls.Add(this.AtualizarAluno);
             this.Controls.Add(this.EliminarAluno);
             this.Controls.Add(this.label9);
@@ -299,6 +311,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button EliminarAluno;
         private System.Windows.Forms.Button AtualizarAluno;
+        private System.Windows.Forms.Button LimparDados;
     }
 }
 

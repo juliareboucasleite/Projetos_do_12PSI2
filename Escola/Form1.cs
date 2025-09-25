@@ -232,5 +232,19 @@ namespace Escola
                 }
             }
         }
+        /// <summary>
+        /// Limpar os dados dos controlos de introdução de dados.
+        /// </summary>
+        private void LimparDados_Click(object sender, EventArgs e)
+        {
+            IdAluno.Text = "";
+            NumeroProcesso.Text = "";
+            NumeroAluno.Text = "";
+            Nome.Text = "";
+            Morada.Text = "";
+            CodigoPostal.Text = "";
+            Email.Text = "";
+            DataNascimento.Value = DateTime.Now;
+        }
     }
 }
