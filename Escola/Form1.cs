@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -245,6 +246,55 @@ namespace Escola
             CodigoPostal.Text = "";
             Email.Text = "";
             DataNascimento.Value = DateTime.Now;
+        }
+        /// <summary>
+        /// Inserir os dados de um novo aluno.
+        /// </summary>
+        private void InserirAluno_Click(object sender, EventArgs e)
+        {
+            // Verificar que não se está a tentar inserir um aluno já existente
+            if (IdAluno.Text == "")
+            {
+                try
+                {
+                    var sql = "INSERT INTO alunos (NumeroProcesso, Numero, Nome, Morada, CodigoPostal,Email, DataNascimento) VALUES(@numeroProcesso, @numero, @nome, @morada, @codigoPostal,@email, @dataNascimento)";
+                using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
+                    {
+                        // Obter os dados dos controlos e inseri-los em parâmetros para a consulta SQL
+                        int i = connection.Execute(sql, new
+                        {
+                            numeroProcesso = 0,
+                            numero = 0,
+                            nome =
+                        Nome.Text,
+                            morada = Morada.Text,
+                            codigoPostal = CodigoPostal.Text,
+                            email = Email.Text,
+                            dataNascimento = DataNascimento.Value.ToString("yyyy-MM-dd")
+                        });
+                        // Verificar se foi inserido 1 registo
+                        if (i == 1)
+                        {
+                            // Refrescar os controlos porque foi inserido um novo registo
+                            Inicializar();
+                            MessageBox.Show("O registo foi inserido com sucesso", "Inserir registo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocorreu um erro ao tentar inserir o registo", "Inserirregisto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Ocorreu um erro de base de dados ao tentar inserir o registo","Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Não é possível inserir um aluno já existente. Limpe os dados parainserir um novo aluno.", "Inserir registo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

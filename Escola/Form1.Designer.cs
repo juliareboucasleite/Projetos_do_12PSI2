@@ -50,6 +50,7 @@
             this.EliminarAluno = new System.Windows.Forms.Button();
             this.AtualizarAluno = new System.Windows.Forms.Button();
             this.LimparDados = new System.Windows.Forms.Button();
+            this.InserirAluno = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListaAlunos
@@ -244,7 +245,7 @@
             // 
             // LimparDados
             // 
-            this.LimparDados.Location = new System.Drawing.Point(61, 346);
+            this.LimparDados.Location = new System.Drawing.Point(51, 346);
             this.LimparDados.Name = "LimparDados";
             this.LimparDados.Size = new System.Drawing.Size(75, 23);
             this.LimparDados.TabIndex = 21;
@@ -252,11 +253,22 @@
             this.LimparDados.UseVisualStyleBackColor = true;
             this.LimparDados.Click += new System.EventHandler(this.LimparDados_Click);
             // 
+            // InserirAluno
+            // 
+            this.InserirAluno.Location = new System.Drawing.Point(132, 346);
+            this.InserirAluno.Name = "InserirAluno";
+            this.InserirAluno.Size = new System.Drawing.Size(75, 23);
+            this.InserirAluno.TabIndex = 22;
+            this.InserirAluno.Text = "&Inserir";
+            this.InserirAluno.UseVisualStyleBackColor = true;
+            this.InserirAluno.Click += new System.EventHandler(this.InserirAluno_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 393);
+            this.Controls.Add(this.InserirAluno);
             this.Controls.Add(this.LimparDados);
             this.Controls.Add(this.AtualizarAluno);
             this.Controls.Add(this.EliminarAluno);
@@ -312,6 +324,7 @@
         private System.Windows.Forms.Button EliminarAluno;
         private System.Windows.Forms.Button AtualizarAluno;
         private System.Windows.Forms.Button LimparDados;
+        private System.Windows.Forms.Button InserirAluno;
     }
 }
 
