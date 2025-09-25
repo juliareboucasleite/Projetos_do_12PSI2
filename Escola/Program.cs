@@ -16,7 +16,8 @@ namespace Escola
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            // Efetuar autenticação
+            Application.Run(new FormAutenticacao());
         }
     }
 }
