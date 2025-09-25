@@ -40,8 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.IdAluno = new System.Windows.Forms.Label();
-            this.NumeroProcesso = new System.Windows.Forms.Label();
-            this.NumeroAluno = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,6 +49,8 @@
             this.AtualizarAluno = new System.Windows.Forms.Button();
             this.LimparDados = new System.Windows.Forms.Button();
             this.InserirAluno = new System.Windows.Forms.Button();
+            this.NumeroProcesso = new System.Windows.Forms.TextBox();
+            this.NumeroAluno = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // ListaAlunos
@@ -158,26 +158,6 @@
             this.IdAluno.TabIndex = 8;
             this.IdAluno.Text = "label6";
             // 
-            // NumeroProcesso
-            // 
-            this.NumeroProcesso.AutoSize = true;
-            this.NumeroProcesso.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumeroProcesso.Location = new System.Drawing.Point(601, 57);
-            this.NumeroProcesso.Name = "NumeroProcesso";
-            this.NumeroProcesso.Size = new System.Drawing.Size(38, 13);
-            this.NumeroProcesso.TabIndex = 10;
-            this.NumeroProcesso.Text = "label7";
-            // 
-            // NumeroAluno
-            // 
-            this.NumeroAluno.AutoSize = true;
-            this.NumeroAluno.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumeroAluno.Location = new System.Drawing.Point(754, 57);
-            this.NumeroAluno.Name = "NumeroAluno";
-            this.NumeroAluno.Size = new System.Drawing.Size(38, 13);
-            this.NumeroAluno.TabIndex = 12;
-            this.NumeroAluno.Text = "label8";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -263,11 +243,27 @@
             this.InserirAluno.UseVisualStyleBackColor = true;
             this.InserirAluno.Click += new System.EventHandler(this.InserirAluno_Click);
             // 
+            // NumeroProcesso
+            // 
+            this.NumeroProcesso.Location = new System.Drawing.Point(601, 54);
+            this.NumeroProcesso.Name = "NumeroProcesso";
+            this.NumeroProcesso.Size = new System.Drawing.Size(37, 22);
+            this.NumeroProcesso.TabIndex = 23;
+            // 
+            // NumeroAluno
+            // 
+            this.NumeroAluno.Location = new System.Drawing.Point(754, 54);
+            this.NumeroAluno.Name = "NumeroAluno";
+            this.NumeroAluno.Size = new System.Drawing.Size(48, 22);
+            this.NumeroAluno.TabIndex = 24;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 393);
+            this.Controls.Add(this.NumeroAluno);
+            this.Controls.Add(this.NumeroProcesso);
             this.Controls.Add(this.InserirAluno);
             this.Controls.Add(this.LimparDados);
             this.Controls.Add(this.AtualizarAluno);
@@ -277,8 +273,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.NumeroAluno);
-            this.Controls.Add(this.NumeroProcesso);
             this.Controls.Add(this.IdAluno);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -314,8 +308,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label IdAluno;
-        private System.Windows.Forms.Label NumeroProcesso;
-        private System.Windows.Forms.Label NumeroAluno;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -325,6 +317,8 @@
         private System.Windows.Forms.Button AtualizarAluno;
         private System.Windows.Forms.Button LimparDados;
         private System.Windows.Forms.Button InserirAluno;
+        private System.Windows.Forms.TextBox NumeroProcesso;
+        private System.Windows.Forms.TextBox NumeroAluno;
     }
 }
 

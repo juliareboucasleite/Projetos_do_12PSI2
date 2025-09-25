@@ -257,16 +257,15 @@ namespace Escola
             {
                 try
                 {
-                    var sql = "INSERT INTO alunos (NumeroProcesso, Numero, Nome, Morada, CodigoPostal,Email, DataNascimento) VALUES(@numeroProcesso, @numero, @nome, @morada, @codigoPostal,@email, @dataNascimento)";
+                var sql = "INSERT INTO alunos (NumeroProcesso, Numero, Nome, Morada, CodigoPostal,Email, DataNascimento) VALUES(@numeroProcesso, @numero, @nome, @morada, @codigoPostal,@email, @dataNascimento)";
                 using (var connection = new MySqlConnection(LigacaoDB.GetConnectionString()))
                     {
                         // Obter os dados dos controlos e inseri-los em parâmetros para a consulta SQL
                         int i = connection.Execute(sql, new
                         {
-                            numeroProcesso = 0,
-                            numero = 0,
-                            nome =
-                        Nome.Text,
+                            numeroProcesso = NumeroProcesso,
+                            numero = NumeroAluno,
+                            Nome.Text,
                             morada = Morada.Text,
                             codigoPostal = CodigoPostal.Text,
                             email = Email.Text,
