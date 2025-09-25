@@ -34,5 +34,10 @@ namespace Escola
             Password.UseSystemPasswordChar = true;
             this.ResumeLayout(false);
         }
+
+        private void BotaoCancelar_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }
