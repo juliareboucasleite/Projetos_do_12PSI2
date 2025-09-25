@@ -13,8 +13,13 @@ using System.Windows.Forms;
 
 namespace Escola
 {
+
     public partial class FormAutenticacao : Form
     {
+        /// <summary>
+        /// Indica se o utilizador está autenticado.
+        /// </summary>
+        private bool Autenticado = false;
         public FormAutenticacao()
         {
             InitializeComponent();
@@ -64,7 +69,8 @@ namespace Escola
                         if (resultado == 1)
                         {
                             // O utilizador foi autenticado com sucesso; fechar a form e passar ocontrolo para a form principal
-                        this.Close();
+                            Autenticado = true;
+                            this.Close();
                         }
                         else
                         {
@@ -81,6 +87,18 @@ namespace Escola
             else
             {
                 LabelFeedback.Text = "Insira os dados de autenticação";
+            }
+        }
+
+        /// <summary>
+        /// Executar quando a form está prestes a fechar.
+        /// </summary>
+        private void FormAutenticacao_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Verifica a razão do fecho da form e se o utilizador efetuou a autenticação com sucesso
+            if ((e.CloseReason == CloseReason.UserClosing) && (Autenticado == false))
+            {
+                System.Environment.Exit(0);
             }
         }
     }

@@ -42,14 +42,14 @@
             // 
             this.Utilizador.Location = new System.Drawing.Point(122, 74);
             this.Utilizador.Name = "Utilizador";
-            this.Utilizador.Size = new System.Drawing.Size(195, 22);
+            this.Utilizador.Size = new System.Drawing.Size(268, 22);
             this.Utilizador.TabIndex = 2;
             // 
             // Password
             // 
             this.Password.Location = new System.Drawing.Point(122, 115);
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(195, 22);
+            this.Password.Size = new System.Drawing.Size(268, 22);
             this.Password.TabIndex = 4;
             // 
             // label1
