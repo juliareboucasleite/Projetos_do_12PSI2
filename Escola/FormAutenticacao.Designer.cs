@@ -97,6 +97,7 @@
             this.BotaoOk.TabIndex = 6;
             this.BotaoOk.Text = "&OK";
             this.BotaoOk.UseVisualStyleBackColor = true;
+            this.BotaoOk.Click += new System.EventHandler(this.BotaoOk_Click);
             // 
             // BotaoCancelar
             // 

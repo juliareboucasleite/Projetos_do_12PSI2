@@ -18,6 +18,8 @@ namespace Escola
             Application.SetCompatibleTextRenderingDefault(false);
             // Efetuar autenticação
             Application.Run(new FormAutenticacao());
+            // Se a autenticação for bem sucedida, abrir a janela principal
+            Application.Run(new Form1());
         }
     }
 }
