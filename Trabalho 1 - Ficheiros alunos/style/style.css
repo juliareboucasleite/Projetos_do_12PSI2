@@ -1,0 +1,11 @@
+body {
+    margin: 10;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+#canvas,
+#canvas2 {
+    display: block;
+}
