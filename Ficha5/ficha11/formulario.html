@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Curso de Programação</title>
+</head>
+<body>
+    <h2>Curso de Programação - Escola Avelar Brotero</h2>
+    <form action="processar_formulario.php" method="post">
+        Nome: <input type="text" name="nome" required><br><br>
+        Email: <input type="email" name="email" required><br><br>
+        Telefone/Telemóvel: <input type="text" name="telefone" required><br><br>
+
+        <p><b>Interesse em:</b></p>
+        <input type="radio" name="interesse" value="Android"> Android<br>
+        <input type="radio" name="interesse" value="HTML"> HTML<br>
+        <input type="radio" name="interesse" value="Java"> Java<br>
+        <input type="radio" name="interesse" value="PHP"> PHP<br>
+        <input type="radio" name="interesse" value="Python"> Python<br>
+        <input type="radio" name="interesse" value="SQL"> SQL<br><br>
+
+        <label>Nível de curso:</label>
+        <select name="nivel">
+            <option value="">Selecione uma opção</option>
+            <option value="Iniciação">Iniciação</option>
+            <option value="Intermédio">Intermédio</option>
+            <option value="Avançado">Avançado</option>
+        </select><br><br>
+
+         <label>Observações:</label><br>
+        <textarea name="observacoes" rows="5" cols="40"></textarea><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

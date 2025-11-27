@@ -1,0 +1,26 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+nav.navbar {
+  height: 120px; background-color: #31547a;
+}
+
+main { margin: 2rem 0; }
+
+.filmes {
+  margin-top: 1rem; padding: 2rem 1rem; background-color:bisque;
+  display: flex; flex-direction: row; flex-wrap: wrap; column-gap: 2rem; row-gap: 2.5rem; justify-content: start;
+
+  & .filme {
+    & img {
+      height: 320px; border-radius: 8px; box-shadow: 2px 2px 12px rgba(0,0,0,0.4);
+    }
+
+    & .titulo { margin-top: 0.5em; font-weight: 700; text-align: center}
+  }
+}
